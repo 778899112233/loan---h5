@@ -1,0 +1,566 @@
+<html lang="zh-CN"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>贷款申请</title>
+    <!-- Tailwind CSS v3 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- 用户服务协议模态框 -->
+    <div id="serviceAgreementModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg w-full max-w-2xl max-h-[80vh] overflow-y-auto">
+            <div class="p-5 border-b">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-lg font-medium">用户服务协议</h3>
+                    <button class="close-modal text-gray-500 hover:text-gray-700">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="p-5">
+                <h4 class="font-medium mb-2">第一条 协议的订立</h4>
+                <p class="text-sm mb-4">本协议由您与我们共同订立，旨在规范您使用我们提供的贷款服务的相关事宜。您在申请贷款前应仔细阅读本协议的全部内容，尤其是以加粗或下划线标注的条款，这些条款可能会明确您应履行的义务或对您的权利有所限制。</p>
+                
+                <h4 class="font-medium mb-2">第二条 贷款额度与期限</h4>
+                <p class="text-sm mb-4">2.1 我们将根据您的信用状况、收入水平等因素，为您提供最高不超过200,000元的贷款额度。具体额度以我们的审批结果为准。</p>
+                <p class="text-sm mb-4">2.2 贷款期限分为3期、6期、12期、24期、36期，您可根据自身需求选择合适的期限。</p>
+                <p class="text-sm mb-4">2.3 贷款额度和期限的最终确定以我们的审批结果为准，我们有权根据您的实际情况调整贷款额度和期限。</p>
+                
+                <h4 class="font-medium mb-2">第三条 贷款利率与费用</h4>
+                <p class="text-sm mb-4">3.1 本贷款的日利率为0.02%，月利率为0.6%。如遇国家利率政策调整，我们有权相应调整贷款利率。</p>
+                <p class="text-sm mb-4">3.2 除利息外，我们不收取任何额外费用。</p>
+                
+                <h4 class="font-medium mb-2">第四条 贷款申请与审批</h4>
+                <p class="text-sm mb-4">4.1 您应按照我们的要求提供真实、准确、完整的个人资料和信息。如您提供的资料或信息不真实、不准确或不完整，我们有权拒绝您的贷款申请，或要求您提前偿还已发放的贷款本息。</p>
+                <p class="text-sm mb-4">4.2 我们将对您的贷款申请进行审批，审批结果将通过短信、电话或APP通知您。</p>
+                <p class="text-sm mb-4">4.3 您的贷款申请经审批通过后，我们将根据您选择的提现方式，将贷款资金发放至您指定的账户。</p>
+                
+                <h4 class="font-medium mb-2">第五条 贷款偿还</h4>
+                <p class="text-sm mb-4">5.1 您应按照本协议约定的期限和金额偿还贷款本息。</p>
+                <p class="text-sm mb-4">5.2 贷款偿还方式为等额本息，即每月偿还同等数额的贷款（包括本金和利息）。</p>
+                <p class="text-sm mb-4">5.3 如您未按约定时间偿还贷款本息，我们将按照逾期天数收取逾期利息，逾期利息的计算方式为：逾期本金×逾期天数×日利率×150%。</p>
+                
+                <h4 class="font-medium mb-2">第六条 违约责任</h4>
+                <p class="text-sm mb-4">6.1 如您违反本协议的任何约定，我们有权采取以下一项或多项措施：</p>
+                <p class="text-sm mb-4">（1）要求您立即偿还全部贷款本息；</p>
+                <p class="text-sm mb-4">（2）收取逾期利息；</p>
+                <p class="text-sm mb-4">（3）将您的违约信息上报至中国人民银行征信系统；</p>
+                <p class="text-sm mb-4">（4）通过法律途径追讨贷款本息及相关费用。</p>
+                
+                <h4 class="font-medium mb-2">第七条 协议的变更与终止</h4>
+                <p class="text-sm mb-4">7.1 我们有权根据国家法律法规的变更或业务需要，对本协议的内容进行修改。修改后的协议内容将在我们的APP或网站上公布，您继续使用我们的服务即视为同意修改后的协议。</p>
+                <p class="text-sm mb-4">7.2 本协议自您点击"同意"并提交贷款申请之日起生效，至您还清全部贷款本息之日终止。</p>
+                
+                <h4 class="font-medium mb-2">第八条 争议解决</h4>
+                <p class="text-sm mb-4">8.1 本协议的订立、履行、解释及争议解决均适用中华人民共和国法律。</p>
+                <p class="text-sm mb-4">8.2 如您与我们之间发生任何争议，应首先通过友好协商解决；协商不成的，任何一方均有权向我们所在地有管辖权的人民法院提起诉讼。</p>
+                
+                <h4 class="font-medium mb-2">第九条 其他条款</h4>
+                <p class="text-sm mb-4">9.1 本协议的任何条款被认定为无效或不可执行，不影响其他条款的效力。</p>
+                <p class="text-sm mb-4">9.2 我们未行使或延迟行使本协议项下的任何权利，不构成对该权利的放弃。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 隐私协议模态框 -->
+    <div id="privacyAgreementModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg w-full max-w-2xl max-h-[80vh] overflow-y-auto">
+            <div class="p-5 border-b">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-lg font-medium">隐私协议</h3>
+                    <button class="close-modal text-gray-500 hover:text-gray-700">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="p-5">
+                <h4 class="font-medium mb-2">第一条 隐私政策的适用范围</h4>
+                <p class="text-sm mb-4">本隐私政策适用于我们为您提供的所有贷款服务。本隐私政策旨在向您说明我们如何收集、使用、存储和保护您的个人信息，以及您享有的相关权利。</p>
+                
+                <h4 class="font-medium mb-2">第二条 我们收集的信息</h4>
+                <p class="text-sm mb-4">2.1 您提供的信息：您在申请贷款时，我们会收集您提供的个人信息，包括但不限于姓名、身份证号码、手机号码、银行卡号、收入情况等。</p>
+                <p class="text-sm mb-4">2.2 我们获取的信息：在您使用我们的服务过程中，我们可能会自动收集一些信息，包括但不限于您的设备信息、IP地址、浏览记录、使用习惯等。</p>
+                <p class="text-sm mb-4">2.3 第三方提供的信息：为了更好地为您提供服务，我们可能会从第三方获取您的相关信息，包括但不限于征信机构提供的信用报告、运营商提供的通讯记录等。</p>
+                
+                <h4 class="font-medium mb-2">第三条 我们如何使用您的信息</h4>
+                <p class="text-sm mb-4">3.1 用于贷款审批：我们会使用您提供的个人信息进行贷款审批，评估您的还款能力和信用状况。</p>
+                <p class="text-sm mb-4">3.2 用于贷款管理：我们会使用您的个人信息进行贷款管理，包括但不限于贷款发放、还款提醒、逾期催收等。</p>
+                <p class="text-sm mb-4">3.3 用于服务优化：我们会使用您的个人信息优化我们的服务，包括但不限于改进产品功能、提升用户体验等。</p>
+                <p class="text-sm mb-4">3.4 用于风险控制：我们会使用您的个人信息进行风险控制，防范欺诈、洗钱等违法犯罪行为。</p>
+                
+                <h4 class="font-medium mb-2">第四条 我们如何保护您的信息</h4>
+                <p class="text-sm mb-4">4.1 我们采取各种安全措施保护您的个人信息，包括但不限于加密存储、访问控制、安全审计等。</p>
+                <p class="text-sm mb-4">4.2 我们严格限制接触您个人信息的人员范围，并要求相关人员履行保密义务。</p>
+                <p class="text-sm mb-4">4.3 如发生个人信息泄露事件，我们将及时采取补救措施，并按照相关法律法规的要求向您和监管部门报告。</p>
+                
+                <h4 class="font-medium mb-2">第五条 信息的共享与披露</h4>
+                <p class="text-sm mb-4">5.1 我们不会向任何第三方出售、出租、交换或以其他方式转让您的个人信息，除非获得您的明确授权。</p>
+                <p class="text-sm mb-4">5.2 在以下情况下，我们可能会共享您的个人信息：</p>
+                <p class="text-sm mb-4">（1）获得您的明确授权；</p>
+                <p class="text-sm mb-4">（2）遵守法律法规的要求；</p>
+                <p class="text-sm mb-4">（3）保护我们的合法权益；</p>
+                <p class="text-sm mb-4">（4）与我们的合作伙伴共享，用于为您提供更好的服务。</p>
+                <p class="text-sm mb-4">5.3 我们会要求接收您个人信息的第三方采取适当的安全措施保护您的个人信息，并遵守相关法律法规的要求。</p>
+                
+                <h4 class="font-medium mb-2">第六条 您的权利</h4>
+                <p class="text-sm mb-4">6.1 您有权查询、更正、删除您的个人信息。</p>
+                <p class="text-sm mb-4">6.2 您有权要求我们停止使用您的个人信息。</p>
+                <p class="text-sm mb-4">6.3 您有权要求我们提供您的个人信息副本。</p>
+                <p class="text-sm mb-4">6.4 您有权拒绝我们收集、使用您的个人信息，但这可能会影响您使用我们的部分服务。</p>
+                
+                <h4 class="font-medium mb-2">第七条 隐私政策的更新</h4>
+                <p class="text-sm mb-4">7.1 我们可能会根据法律法规的变更或业务需要，更新本隐私政策。更新后的隐私政策将在我们的APP或网站上公布。</p>
+                <p class="text-sm mb-4">7.2 如隐私政策发生重大变更，我们将通过适当的方式通知您，您继续使用我们的服务即视为同意更新后的隐私政策。</p>
+                
+                <h4 class="font-medium mb-2">第八条 联系我们</h4>
+                <p class="text-sm mb-4">8.1 如您对本隐私政策有任何疑问，或需要行使您的权利，请通过以下方式联系我们：</p>
+                <p class="text-sm mb-4">客服电话：400-123-4567</p>
+                <p class="text-sm mb-4">客服邮箱：service@example.com</p>
+                <p class="text-sm mb-4">工作时间：周一至周五 9:00-18:00</p>
+                
+                <h4 class="font-medium mb-2">第九条 其他条款</h4>
+                <p class="text-sm mb-4">9.1 本隐私政策的解释及争议解决均适用中华人民共和国法律。</p>
+                <p class="text-sm mb-4">9.2 如您与我们之间因本隐私政策发生任何争议，应首先通过友好协商解决；协商不成的，任何一方均有权向我们所在地有管辖权的人民法院提起诉讼。</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1E88E5',
+                        secondary: '#F5F5F5',
+                        accent: '#4CAF50',
+                        textDark: '#333333',
+                        textLight: '#666666',
+                        borderColor: '#E0E0E0'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .card {
+                @apply bg-white rounded-lg shadow-md p-5 mb-4;
+            }
+            .btn-primary {
+                @apply bg-primary text-white font-medium py-3 px-4 rounded-md w-full transition-all duration-300;
+            }
+            .btn-primary:disabled {
+                @apply bg-gray-300 cursor-not-allowed;
+            }
+            .btn-primary:not(:disabled):hover {
+                @apply bg-blue-600;
+            }
+            .term-option {
+                @apply border border-borderColor rounded-md py-2 px-4 text-center cursor-pointer transition-all duration-300;
+            }
+            .term-option.active {
+                @apply border-primary text-primary bg-blue-50;
+            }
+            .input-field {
+                @apply w-full border border-borderColor rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
+            }
+            .info-tag {
+                @apply bg-blue-50 text-primary text-xs px-2 py-1 rounded-md inline-block;
+            }
+            .payment-option {
+                @apply transition-all duration-300;
+            }
+            .payment-option.active > div {
+                @apply border-primary bg-blue-50;
+            }
+        }
+    </style>
+</head>
+<body class="bg-secondary min-h-screen font-sans text-textDark">
+    <div class="container mx-auto max-w-md p-4">
+        <!-- 借款金额区域 -->
+        <div class="card">
+            <div class="flex justify-between items-center mb-2">
+                <h2 class="text-sm text-textLight">借款金额 <span class="text-primary">(可自定义)</span></h2>
+                <button id="showAllBtn" class="text-xs text-primary">全部额度</button>
+            </div>
+            <div class="flex items-baseline mt-2">
+                <span class="text-2xl font-bold mr-2">¥</span>
+                <input type="number" id="loanAmountInput" class="text-3xl font-bold border-none focus:ring-0 w-32" value="10000" min="3000" max="200000">
+                <span class="text-sm text-textLight ml-2">元</span>
+            </div>
+            <div class="text-xs text-textLight mt-1">借款金额范围：3,000 - 200,000元</div>
+            
+            <div class="grid grid-cols-3 gap-4 mt-4">
+                <div>
+                    <p class="text-xs text-textLight">总额度(元)</p>
+                    <p class="text-sm font-medium">10,000</p>
+                </div>
+                <div>
+                    <p class="text-xs text-textLight">日利率</p>
+                    <p class="text-sm font-medium">0.02%</p>
+                </div>
+                <div>
+                    <p class="text-xs text-textLight">最快到账时间</p>
+                    <p class="text-sm font-medium">15分钟</p>
+                </div>
+            </div>
+            
+            <div class="mt-3 p-3 bg-blue-50 rounded-md flex items-center">
+                <i class="fa fa-info-circle text-primary mr-2"></i>
+                <div>
+                    <p class="text-xs">
+                        <span class="info-tag">临时额度</span>
+                        <span class="text-textDark">10000元 (有效期至2025.12.02)</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 借款期限选择区域 -->
+        <div class="card">
+            <h2 class="text-sm text-textLight mb-3">借款期限</h2>
+            <div class="grid grid-cols-5 gap-2">
+                <div class="term-option" data-term="3">3期</div>
+                <div class="term-option" data-term="6">6期</div>
+                <div class="term-option" data-term="12">12期</div>
+                <div class="term-option active" data-term="24">24期</div>
+                <div class="term-option" data-term="36">36期</div>
+            </div>
+        </div>
+
+        <!-- 还款计划区域 -->
+        <div class="card">
+            <div class="flex justify-between items-center">
+                <h2 class="text-sm text-textLight">还款计划</h2>
+                <p class="text-sm font-medium">每月应还 ¥99.55</p>
+            </div>
+        </div>
+
+        <!-- 选择提现方式区域 -->
+        <div class="card">
+            <h2 class="text-sm text-textLight mb-3">选择提现方式</h2>
+            <div class="grid grid-cols-3 gap-3 mb-2">
+                <div class="payment-option active" data-payment="wechat">
+                    <div class="flex flex-col items-center justify-center p-3 border rounded-md cursor-pointer transition-all duration-300">
+                        <i class="fa fa-weixin text-accent text-2xl mb-2"></i>
+                        <span class="text-sm">微信</span>
+                    </div>
+                </div>
+                <div class="payment-option" data-payment="alipay">
+                    <div class="flex flex-col items-center justify-center p-3 border rounded-md cursor-pointer transition-all duration-300">
+                        <i class="fa fa-credit-card text-blue-500 text-2xl mb-2"></i>
+                        <span class="text-sm">支付宝</span>
+                    </div>
+                </div>
+                <div class="payment-option" data-payment="bank">
+                    <div class="flex flex-col items-center justify-center p-3 border rounded-md cursor-pointer transition-all duration-300">
+                        <i class="fa fa-university text-gray-600 text-2xl mb-2"></i>
+                        <span class="text-sm">储蓄卡</span>
+                    </div>
+                </div>
+            </div>
+            <p class="text-xs text-textLight">* 最终提款金额以实际审批为准，具体提款限制以实际审批为准</p>
+            <p class="text-xs text-textLight">* 提款成功后资金将在2小时内到账</p>
+        </div>
+
+        <!-- 额度领取区域 -->
+        <div class="card">
+            <div class="mb-4">
+                <input type="tel" id="phoneInput" class="input-field" placeholder="输入手机号领取额度" maxlength="11">
+            </div>
+            <button id="claimBtn" class="btn-primary" disabled="">去领取</button>
+            <div class="flex items-start mt-3">
+                <input type="checkbox" id="agreementCheckbox" class="mt-1 mr-2">
+                <label for="agreementCheckbox" class="text-xs text-textLight">
+                    我已阅读并同意<a href="#" id="serviceAgreementLink" class="text-primary">《用户服务协议》</a>
+                    <a href="#" id="privacyAgreementLink" class="text-primary">《隐私协议》</a>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div id="serviceAgreementModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg w-full max-w-2xl max-h-[80vh] overflow-y-auto">
+            <div class="p-5 border-b">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-lg font-medium">用户服务协议</h3>
+                    <button class="close-modal text-gray-500 hover:text-gray-700">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="p-5">
+                <h4 class="font-medium mb-2">第一条 协议的订立</h4>
+                <p class="text-sm mb-4">本协议由您与我们共同订立，旨在规范您使用我们提供的贷款服务的相关事宜。您在申请贷款前应仔细阅读本协议的全部内容，尤其是以加粗或下划线标注的条款，这些条款可能会明确您应履行的义务或对您的权利有所限制。</p>
+                
+                <h4 class="font-medium mb-2">第二条 贷款额度与期限</h4>
+                <p class="text-sm mb-4">2.1 我们将根据您的信用状况、收入水平等因素，为您提供最高不超过200,000元的贷款额度。具体额度以我们的审批结果为准。</p>
+                <p class="text-sm mb-4">2.2 贷款期限分为3期、6期、12期、24期、36期，您可根据自身需求选择合适的期限。</p>
+                <p class="text-sm mb-4">2.3 贷款额度和期限的最终确定以我们的审批结果为准，我们有权根据您的实际情况调整贷款额度和期限。</p>
+                
+                <h4 class="font-medium mb-2">第三条 贷款利率与费用</h4>
+                <p class="text-sm mb-4">3.1 本贷款的日利率为0.02%，月利率为0.6%。如遇国家利率政策调整，我们有权相应调整贷款利率。</p>
+                <p class="text-sm mb-4">3.2 除利息外，我们不收取任何额外费用。</p>
+                
+                <h4 class="font-medium mb-2">第四条 贷款申请与审批</h4>
+                <p class="text-sm mb-4">4.1 您应按照我们的要求提供真实、准确、完整的个人资料和信息。如您提供的资料或信息不真实、不准确或不完整，我们有权拒绝您的贷款申请，或要求您提前偿还已发放的贷款本息。</p>
+                <p class="text-sm mb-4">4.2 我们将对您的贷款申请进行审批，审批结果将通过短信、电话或APP通知您。</p>
+                <p class="text-sm mb-4">4.3 您的贷款申请经审批通过后，我们将根据您选择的提现方式，将贷款资金发放至您指定的账户。</p>
+                
+                <h4 class="font-medium mb-2">第五条 贷款偿还</h4>
+                <p class="text-sm mb-4">5.1 您应按照本协议约定的期限和金额偿还贷款本息。</p>
+                <p class="text-sm mb-4">5.2 贷款偿还方式为等额本息，即每月偿还同等数额的贷款（包括本金和利息）。</p>
+                <p class="text-sm mb-4">5.3 如您未按约定时间偿还贷款本息，我们将按照逾期天数收取逾期利息，逾期利息的计算方式为：逾期本金×逾期天数×日利率×150%。</p>
+                
+                <h4 class="font-medium mb-2">第六条 违约责任</h4>
+                <p class="text-sm mb-4">6.1 如您违反本协议的任何约定，我们有权采取以下一项或多项措施：</p>
+                <p class="text-sm mb-4">（1）要求您立即偿还全部贷款本息；</p>
+                <p class="text-sm mb-4">（2）收取逾期利息；</p>
+                <p class="text-sm mb-4">（3）将您的违约信息上报至中国人民银行征信系统；</p>
+                <p class="text-sm mb-4">（4）通过法律途径追讨贷款本息及相关费用。</p>
+                
+                <h4 class="font-medium mb-2">第七条 协议的变更与终止</h4>
+                <p class="text-sm mb-4">7.1 我们有权根据国家法律法规的变更或业务需要，对本协议的内容进行修改。修改后的协议内容将在我们的APP或网站上公布，您继续使用我们的服务即视为同意修改后的协议。</p>
+                <p class="text-sm mb-4">7.2 本协议自您点击"同意"并提交贷款申请之日起生效，至您还清全部贷款本息之日终止。</p>
+                
+                <h4 class="font-medium mb-2">第八条 争议解决</h4>
+                <p class="text-sm mb-4">8.1 本协议的订立、履行、解释及争议解决均适用中华人民共和国法律。</p>
+                <p class="text-sm mb-4">8.2 如您与我们之间发生任何争议，应首先通过友好协商解决；协商不成的，任何一方均有权向我们所在地有管辖权的人民法院提起诉讼。</p>
+                
+                <h4 class="font-medium mb-2">第九条 其他条款</h4>
+                <p class="text-sm mb-4">9.1 本协议的任何条款被认定为无效或不可执行，不影响其他条款的效力。</p>
+                <p class="text-sm mb-4">9.2 我们未行使或延迟行使本协议项下的任何权利，不构成对该权利的放弃。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 隐私协议模态框 -->
+    <div id="privacyAgreementModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg w-full max-w-2xl max-h-[80vh] overflow-y-auto">
+            <div class="p-5 border-b">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-lg font-medium">隐私协议</h3>
+                    <button class="close-modal text-gray-500 hover:text-gray-700">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="p-5">
+                <h4 class="font-medium mb-2">第一条 隐私政策的适用范围</h4>
+                <p class="text-sm mb-4">本隐私政策适用于我们为您提供的所有贷款服务。本隐私政策旨在向您说明我们如何收集、使用、存储和保护您的个人信息，以及您享有的相关权利。</p>
+                
+                <h4 class="font-medium mb-2">第二条 我们收集的信息</h4>
+                <p class="text-sm mb-4">2.1 您提供的信息：您在申请贷款时，我们会收集您提供的个人信息，包括但不限于姓名、身份证号码、手机号码、银行卡号、收入情况等。</p>
+                <p class="text-sm mb-4">2.2 我们获取的信息：在您使用我们的服务过程中，我们可能会自动收集一些信息，包括但不限于您的设备信息、IP地址、浏览记录、使用习惯等。</p>
+                <p class="text-sm mb-4">2.3 第三方提供的信息：为了更好地为您提供服务，我们可能会从第三方获取您的相关信息，包括但不限于征信机构提供的信用报告、运营商提供的通讯记录等。</p>
+                
+                <h4 class="font-medium mb-2">第三条 我们如何使用您的信息</h4>
+                <p class="text-sm mb-4">3.1 用于贷款审批：我们会使用您提供的个人信息进行贷款审批，评估您的还款能力和信用状况。</p>
+                <p class="text-sm mb-4">3.2 用于贷款管理：我们会使用您的个人信息进行贷款管理，包括但不限于贷款发放、还款提醒、逾期催收等。</p>
+                <p class="text-sm mb-4">3.3 用于服务优化：我们会使用您的个人信息优化我们的服务，包括但不限于改进产品功能、提升用户体验等。</p>
+                <p class="text-sm mb-4">3.4 用于风险控制：我们会使用您的个人信息进行风险控制，防范欺诈、洗钱等违法犯罪行为。</p>
+                
+                <h4 class="font-medium mb-2">第四条 我们如何保护您的信息</h4>
+                <p class="text-sm mb-4">4.1 我们采取各种安全措施保护您的个人信息，包括但不限于加密存储、访问控制、安全审计等。</p>
+                <p class="text-sm mb-4">4.2 我们严格限制接触您个人信息的人员范围，并要求相关人员履行保密义务。</p>
+                <p class="text-sm mb-4">4.3 如发生个人信息泄露事件，我们将及时采取补救措施，并按照相关法律法规的要求向您和监管部门报告。</p>
+                
+                <h4 class="font-medium mb-2">第五条 信息的共享与披露</h4>
+                <p class="text-sm mb-4">5.1 我们不会向任何第三方出售、出租、交换或以其他方式转让您的个人信息，除非获得您的明确授权。</p>
+                <p class="text-sm mb-4">5.2 在以下情况下，我们可能会共享您的个人信息：</p>
+                <p class="text-sm mb-4">（1）获得您的明确授权；</p>
+                <p class="text-sm mb-4">（2）遵守法律法规的要求；</p>
+                <p class="text-sm mb-4">（3）保护我们的合法权益；</p>
+                <p class="text-sm mb-4">（4）与我们的合作伙伴共享，用于为您提供更好的服务。</p>
+                <p class="text-sm mb-4">5.3 我们会要求接收您个人信息的第三方采取适当的安全措施保护您的个人信息，并遵守相关法律法规的要求。</p>
+                
+                <h4 class="font-medium mb-2">第六条 您的权利</h4>
+                <p class="text-sm mb-4">6.1 您有权查询、更正、删除您的个人信息。</p>
+                <p class="text-sm mb-4">6.2 您有权要求我们停止使用您的个人信息。</p>
+                <p class="text-sm mb-4">6.3 您有权要求我们提供您的个人信息副本。</p>
+                <p class="text-sm mb-4">6.4 您有权拒绝我们收集、使用您的个人信息，但这可能会影响您使用我们的部分服务。</p>
+                
+                <h4 class="font-medium mb-2">第七条 隐私政策的更新</h4>
+                <p class="text-sm mb-4">7.1 我们可能会根据法律法规的变更或业务需要，更新本隐私政策。更新后的隐私政策将在我们的APP或网站上公布。</p>
+                <p class="text-sm mb-4">7.2 如隐私政策发生重大变更，我们将通过适当的方式通知您，您继续使用我们的服务即视为同意更新后的隐私政策。</p>
+                
+                <h4 class="font-medium mb-2">第八条 联系我们</h4>
+                <p class="text-sm mb-4">8.1 如您对本隐私政策有任何疑问，或需要行使您的权利，请通过以下方式联系我们：</p>
+                <p class="text-sm mb-4">客服电话：400-123-4567</p>
+                <p class="text-sm mb-4">客服邮箱：service@example.com</p>
+                <p class="text-sm mb-4">工作时间：周一至周五 9:00-18:00</p>
+                
+                <h4 class="font-medium mb-2">第九条 其他条款</h4>
+                <p class="text-sm mb-4">9.1 本隐私政策的解释及争议解决均适用中华人民共和国法律。</p>
+                <p class="text-sm mb-4">9.2 如您与我们之间因本隐私政策发生任何争议，应首先通过友好协商解决；协商不成的，任何一方均有权向我们所在地有管辖权的人民法院提起诉讼。</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 期限选择功能
+        const termOptions = document.querySelectorAll('.term-option');
+        const claimBtn = document.getElementById('claimBtn');
+        const agreementCheckbox = document.getElementById('agreementCheckbox');
+        const phoneInput = document.getElementById('phoneInput');
+        const showAllBtn = document.getElementById('showAllBtn');
+        
+        // 期限选择
+        termOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                // 移除所有选中状态
+                termOptions.forEach(opt => opt.classList.remove('active'));
+                // 添加当前选中状态
+                option.classList.add('active');
+                
+                // 更新还款计划
+                updateRepaymentPlan(option.dataset.term);
+            });
+        });
+        
+        // 获取当前借款金额
+        function getCurrentLoanAmount() {
+            const amountInput = document.getElementById('loanAmountInput');
+            let amount = parseInt(amountInput.value);
+            
+            // 确保金额在有效范围内
+            if (isNaN(amount) || amount < 3000) {
+                amount = 3000;
+                amountInput.value = amount;
+            } else if (amount > 200000) {
+                amount = 200000;
+                amountInput.value = amount;
+            }
+            
+            return amount;
+        }
+        
+        // 更新还款计划
+        function updateRepaymentPlan(term) {
+            const baseAmount = getCurrentLoanAmount(); // 获取当前借款金额
+            let monthlyRate = 0.02 / 100 * 30; // 月利率
+            
+            // 根据期限调整利率（示例）
+            if (term >= 12) {
+                monthlyRate *= 0.9; // 长期贷款利率优惠
+            }
+            
+            // 计算每月还款额（等额本息）
+            const monthlyPayment = (baseAmount * monthlyRate * Math.pow(1 + monthlyRate, term)) / 
+                                  (Math.pow(1 + monthlyRate, term) - 1);
+            
+            // 更新显示
+            const repaymentElement = document.querySelector('.card:nth-child(3) p');
+            repaymentElement.textContent = `每月应还 ¥${monthlyPayment.toFixed(2)}`;
+        }
+        
+        // 手机号验证
+        function validatePhone(phone) {
+            const phoneRegex = /^1[3-9]\d{9}$/;
+            return phoneRegex.test(phone);
+        }
+        
+        // 更新领取按钮状态
+        function updateClaimButtonState() {
+            const isPhoneValid = validatePhone(phoneInput.value);
+            const isAgreementChecked = agreementCheckbox.checked;
+            
+            claimBtn.disabled = !(isPhoneValid && isAgreementChecked);
+        }
+        
+        // 监听手机号输入和协议勾选
+        phoneInput.addEventListener('input', updateClaimButtonState);
+        agreementCheckbox.addEventListener('change', updateClaimButtonState);
+        
+        // 领取按钮点击事件
+        claimBtn.addEventListener('click', () => {
+            if (!claimBtn.disabled) {
+                // 获取当前选择的支付方式文本
+                const paymentText = {
+                    'wechat': '微信',
+                    'alipay': '支付宝',
+                    'bank': '储蓄卡'
+                }[selectedPayment];
+                
+                alert(`申请已提交，款项将通过${paymentText}发放，请注意查收通知！`);
+                // 这里可以添加实际的提交逻辑
+            }
+        });
+        
+        // 协议查看功能
+        const serviceAgreementLink = document.getElementById('serviceAgreementLink');
+        const privacyAgreementLink = document.getElementById('privacyAgreementLink');
+        const serviceAgreementModal = document.getElementById('serviceAgreementModal');
+        const privacyAgreementModal = document.getElementById('privacyAgreementModal');
+        const closeButtons = document.querySelectorAll('.close-modal');
+        
+        // 打开用户服务协议
+        serviceAgreementLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            serviceAgreementModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // 防止背景滚动
+        });
+        
+        // 打开隐私协议
+        privacyAgreementLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            privacyAgreementModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // 防止背景滚动
+        });
+        
+        // 关闭模态框
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                serviceAgreementModal.classList.add('hidden');
+                privacyAgreementModal.classList.add('hidden');
+                document.body.style.overflow = ''; // 恢复背景滚动
+            });
+        });
+        
+        // 点击模态框外部关闭
+        window.addEventListener('click', (e) => {
+            if (e.target === serviceAgreementModal) {
+                serviceAgreementModal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+            if (e.target === privacyAgreementModal) {
+                privacyAgreementModal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // 监听借款金额变化
+        const loanAmountInput = document.getElementById('loanAmountInput');
+        loanAmountInput.addEventListener('input', () => {
+            updateRepaymentPlan(document.querySelector('.term-option.active').dataset.term);
+        });
+        
+        // 提现方式选择
+        const paymentOptions = document.querySelectorAll('.payment-option');
+        let selectedPayment = 'wechat'; // 默认选择微信
+        
+        paymentOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                // 移除所有选中状态
+                paymentOptions.forEach(opt => opt.classList.remove('active'));
+                // 添加当前选中状态
+                option.classList.add('active');
+                // 更新选中的支付方式
+                selectedPayment = option.dataset.payment;
+                console.log('已选择提现方式:', selectedPayment);
+            });
+        });
+        
+        // 显示全部额度按钮
+        showAllBtn.addEventListener('click', () => {
+            const amountInput = document.getElementById('loanAmountInput');
+            amountInput.value = '10000'; // 设置为总额度
+            // 更新还款计划
+            updateRepaymentPlan(document.querySelector('.term-option.active').dataset.term);
+        });
+    </script>
+
+</body></html>
